@@ -1,14 +1,11 @@
 import React from 'react';
-import Navbar from "../../components/shared/Navbar";
+import Navbar from "@/components/shared/Navbar";
 
 
 const FormCategories =  () => {
 
     return (
         <>
-            <Navbar></Navbar>
-
-            <div className="container">
                 <section className="section-title">
                     <div className="px-2">
                         <div className="pt-5 pb-4">
@@ -77,7 +74,6 @@ const FormCategories =  () => {
                         </div>
                     </div>
                 </section>
-            </div>
         </>
     );
 
