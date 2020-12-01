@@ -1,4 +1,3 @@
-import Hero from "../components/shared/Hero";
 
 
 const Home = () => (

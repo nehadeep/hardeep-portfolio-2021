@@ -2,10 +2,12 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import '../styles/index.scss';
 import Navbar from "../components/shared/Navbar";
 import Hero from "../components/shared/Hero";
-
+import App from 'next/app';
 
 
 const MyApp =({Component, pageProps}) =>{
+
+   // console.log("page props", Component, pageProps)
 
 const isHomePage = () => Component.name === 'Home';
 

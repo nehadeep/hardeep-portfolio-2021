@@ -1,66 +1,63 @@
+
 const express = require('express')
 const next = require('next');
-const {graphqlHTTP} = require('express-graphql');
-const { buildSchema } = require('graphql');
 
+const {ApolloServer, gql} = require('apollo-server-express');
 
 const port = parseInt(process.env.PORT, 10) || 3000;
-const dev = process.env.NODE_ENV !== 'production'
+const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 const handle = app.getRequestHandler();
 
+//resolvers
+const {portfolioMutations, portfoliosQueries} = require('./graphql/resolvers/index');
 
-const { portfoliosData }= require('./resources/portfolios_data');
+//types
 
-const data = {
-    portfolios : portfoliosData
-};
+const {portfolioTypes} = require('./graphql/types/index');
 
 app.prepare().then(() => {
     const server = express();
 
     //Schema construction using graphql
-    const schema = buildSchema(`
-    type Portfolio {
-        _id: ID,
-        title: String,
-        company: String,
-        companyWebsite: String,
-        location: String,
-        jobTitle: String,
-        description: String,
-        startDate: String,
-        endDate: String,
-    }
+    const typeDefs = gql`
     
-      type Query {
-       hello: String,
-       portfolios: [Portfolio]
-      }
-    `);
+         ${portfolioTypes}
+    
+          type Query {
+           hello: String,
+           portfolio(id: ID): Portfolio
+           portfolios: [Portfolio]
+          }
+          
+          type Mutation {
+          
+            createPortfolio(input: PortfolioInput): Portfolio
+            updatePortfolio(id: ID, input: PortfolioInput) : Portfolio
+            
+          }
+    `;
 
     //the root provides a resolver for each api end point --> resolvers
-    const root = {
-      hello: () =>{
-          return "hello"
-      },
-      portfolios: () => {
-          return data.portfolios;
-      }
+    const resolvers = {
+        Query:{
+            ...portfoliosQueries
+        },
+        Mutation: {
+            ...portfolioMutations
+        }
+
     };
 
-    server.use('/graphql', graphqlHTTP({
-        schema,
-        rootValue: root,
-        graphiql: true
-    }));
+    const apolloServer = new ApolloServer({typeDefs, resolvers});
+    apolloServer.applyMiddleware({app: server});
 
     server.all('*', (req, res) => {
         return handle(req, res)
-    })
+    });
 
     server.listen(port, (err) => {
         if (err) throw err
         console.log(`> Ready on http://localhost:${port}`)
-    })
-})
+    });
+});
