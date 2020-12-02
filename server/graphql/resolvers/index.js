@@ -32,5 +32,10 @@ exports.portfolioMutations = {
         const updatedPortfolio = {...oldPortfolio, ...input}; //merge the updated data with the old data
         data.portfolios[index] = updatedPortfolio;
         return updatedPortfolio
+    },
+    deletePortfolio: (root, {id}) =>{
+        const index = data.portfolios.findIndex(p=>p._id === id);
+        data.portfolios.splice(index, 1);
+        return id;
     }
 };

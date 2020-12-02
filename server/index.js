@@ -34,6 +34,7 @@ app.prepare().then(() => {
           
             createPortfolio(input: PortfolioInput): Portfolio
             updatePortfolio(id: ID, input: PortfolioInput) : Portfolio
+            deletePortfolio(id: ID) : ID
             
           }
     `;
