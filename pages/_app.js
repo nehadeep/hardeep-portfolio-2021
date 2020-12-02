@@ -2,16 +2,23 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import '../styles/index.scss';
 import Navbar from "../components/shared/Navbar";
 import Hero from "../components/shared/Hero";
-import App from 'next/app';
+import {ApolloClient, ApolloProvider, InMemoryCache} from '@apollo/client';
+//import ApolloClient from 'apollo-boost';
+//import { ApolloProvider } from '@apollo/react-hooks';
+//import 'isomorphic-unfetch';
 
+
+const client = new ApolloClient({
+    uri: 'http://localhost:3000/graphql',
+    cache: new InMemoryCache()
+});
 
 const MyApp =({Component, pageProps}) =>{
-
-   // console.log("page props", Component, pageProps)
 
 const isHomePage = () => Component.name === 'Home';
 
   return(
+      <ApolloProvider client={client}>
       <div className="portfolio-app">
         <Navbar/>
           {isHomePage() &&  <Hero/>}
@@ -26,6 +33,7 @@ const isHomePage = () => Component.name === 'Home';
           </footer>
           }
       </div>
+      </ApolloProvider>
   )
 };
 

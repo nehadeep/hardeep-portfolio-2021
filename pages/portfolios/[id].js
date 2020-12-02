@@ -1,32 +1,47 @@
 import {useRouter} from "next/router";
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import axios from "axios";
+import {useQuery, useLazyQuery} from "@apollo/client";
+//import { useQuery } from '@apollo/react-hooks';
+import {GET_PORTFOLIO} from "@/apollo/queries";
 
-const fetchPortfoliosById = (id) =>{
-    const query = `query Portfolio($id:ID){ 
-          portfolio (id:$id) {
-            _id, 
-            title, 
-            company,
-            companyWebsite,
-            location,
-            jobTitle,
-            description,
-            startDate,
-            endDate
-            }
-          }  
-        `;
+// const fetchPortfoliosById = (id) =>{ //replaced with apollo client
+//     const query = `query Portfolio($id:ID){
+//           portfolio (id:$id) {
+//             _id,
+//             title,
+//             company,
+//             companyWebsite,
+//             location,
+//             jobTitle,
+//             description,
+//             startDate,
+//             endDate
+//             }
+//           }
+//         `;
+//
+//     const variables = {id};
+//
+//     return axios.post('http://localhost:3000/graphql', {query, variables}).
+//     then(({data: graph})=> graph.data).then(data=> data.portfolio)
+// };
 
-    const variables = {id};
+const PortfolioDetail = ({query}) =>{
 
-    return axios.post('http://localhost:3000/graphql', {query, variables}).
-    then(({data: graph})=> graph.data).then(data=> data.portfolio)
-};
+    // const router = useRouter();
+    // const {id }= router.query; //this "id" name should match with the file name [id]
+    const [portfolio, setPortfolio] = useState(null);
+    const [getPortfolio, { loading, data }] = useLazyQuery(GET_PORTFOLIO);
 
-const PortfolioDetail = ({portfolio}) =>{
-    const router = useRouter();
-    const {id }= router.query; //this "id" name should match with the file name [id]
+    useEffect(()=>{
+        getPortfolio({variables: {id: query.id}})
+    }, []);
+
+    if(data && !portfolio) setPortfolio(data.portfolio);
+
+    if(loading || !portfolio) return 'Loading....';
+
 
     return(
         <div className="portfolio-detail">
@@ -73,8 +88,8 @@ export default PortfolioDetail;
 
 
 PortfolioDetail.getInitialProps = async({query}) =>{
-    const portfolio = await fetchPortfoliosById(query.id);
-      return {portfolio};
+   // const portfolio = await fetchPortfoliosById(query.id);
+      return {query};
 
 }
 // class PortfolioDetail extends React.Component{
