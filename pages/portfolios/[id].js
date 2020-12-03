@@ -4,6 +4,8 @@ import axios from "axios";
 import {useQuery, useLazyQuery} from "@apollo/client";
 //import { useQuery } from '@apollo/react-hooks';
 import {GET_PORTFOLIO} from "@/apollo/queries";
+import withApollo from "@/hoc/withApollo";
+import { getDataFromTree } from '@apollo/react-ssr';
 
 // const fetchPortfoliosById = (id) =>{ //replaced with apollo client
 //     const query = `query Portfolio($id:ID){
@@ -29,19 +31,9 @@ import {GET_PORTFOLIO} from "@/apollo/queries";
 
 const PortfolioDetail = ({query}) =>{
 
-    // const router = useRouter();
-    // const {id }= router.query; //this "id" name should match with the file name [id]
-    const [portfolio, setPortfolio] = useState(null);
-    const [getPortfolio, { loading, data }] = useLazyQuery(GET_PORTFOLIO);
+    const { loading, data , error} = useQuery(GET_PORTFOLIO, {variables: {id: query.id}});
 
-    useEffect(()=>{
-        getPortfolio({variables: {id: query.id}})
-    }, []);
-
-    if(data && !portfolio) setPortfolio(data.portfolio);
-
-    if(loading || !portfolio) return 'Loading....';
-
+    const portfolio = data && data.portfolio ||{};
 
     return(
         <div className="portfolio-detail">
@@ -84,7 +76,6 @@ const PortfolioDetail = ({query}) =>{
     )
 };
 
-export default PortfolioDetail;
 
 
 PortfolioDetail.getInitialProps = async({query}) =>{
@@ -92,6 +83,9 @@ PortfolioDetail.getInitialProps = async({query}) =>{
       return {query};
 
 }
+
+export default withApollo(PortfolioDetail, {getDataFromTree});
+
 // class PortfolioDetail extends React.Component{
 //
 //     static getInitialProps({query}){ //called on the server
