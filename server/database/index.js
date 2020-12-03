@@ -10,7 +10,8 @@ exports.connect = () =>{
     mongoose.connect(config.DB_URI,
         {
             useNewUrlParser: true,
-            useUnifiedTopology: true
+            useUnifiedTopology: true,
+            useFindAndModify: false
         }, ()=>{
         console.log("connected to DB")
     })

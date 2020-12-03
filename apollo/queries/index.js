@@ -76,17 +76,21 @@ export const UPDATE_PORTFOLIO = gql`
 
         mutation UpdatePortfolio($id: ID) { 
           updatePortfolio(id: $id, input : {
-            title: "update Job", 
+            title: "Job in CDW",
             company: {
-             name:"update company",
-             city:"update city",
-             state: "update state",
-             country: "updated company"
-             }
-            jobTitle: "update Title",
-            description: "update Very pleasant",
-            startDate: "12/03/2019",
-            endDate: "09/12/2020"
+                name: "CDW",
+                city: "Chicago",
+                state: "Illinois",
+                country: "USA",
+                zipCode: "",
+                website: "https://www.cdw.com/"
+            },
+            jobTitle: "UI Developer",
+            description: "CDW is a leading provider of integrated information technology solutions. It helps 250,000 small, medium and large business, government, education and healthcare customers by delivering critical solutions to their increasingly complex IT needs. A Fortune 500 company, CDW was founded in 1984 and employs more than 8,400 coworkers. For the year ended December 31, 2015, the company generated net sales of over $12.9 billion.CDW broad array of offerings range from discrete hardware and software products to integrated IT solutions such as mobility, security, data center optimization, cloud computing, virtualization and collaboration.",
+            jobResponsibilities: [],
+            startDate: "02/20/2015",
+            endDate: "11/01/2016",
+            techStack: ["Javascript", "Jquery", "CSS3","SCSS", "Webpack", "Gulp.js", "Karma.js","Mocha", "Chai"]
             }) {
                 _id, 
                 title, 
