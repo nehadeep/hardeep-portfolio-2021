@@ -1,4 +1,30 @@
+const mongoose = require('mongoose');
+
+const user1Id= mongoose.Types.ObjectId();
+const user2Id = mongoose.Types.ObjectId();
+
 const data = {
+    users: [
+        {
+            _id: user1Id,
+            email: 'test1@test.com',
+            name: 'test1',
+            userName: 'test123',
+            info: 'Im test.',
+            password: '2lajdla',
+            role: 'admin'
+
+        },
+        {
+            _id: user2Id,
+            email: 'test2@test.com',
+            name: 'test2',
+            userName: 'test233',
+            info: 'Im test2.',
+            password: 'dkhkahdk',
+
+        }
+    ],
     portfolios:[
     {
         title: 'Job in Update Promise',
@@ -15,7 +41,8 @@ const data = {
         jobResponsibilities: [],
         startDate: '06/29/2018',
         endDate: '12/03/2020',
-        techStack: ['Angular 9+', 'React', 'Redux', 'React-Hooks', 'Node.js', 'GraphQL', 'Apollo', 'Mongo', 'Jasmine.js', 'CSS3','SCSS']
+        techStack: ['Angular 9+', 'React', 'Redux', 'React-Hooks', 'Node.js', 'GraphQL', 'Apollo', 'Mongo', 'Jasmine.js', 'CSS3','SCSS'],
+        user: user1Id
     },
     {
         title: 'Job in Wells Fargo Bank',
@@ -32,7 +59,8 @@ const data = {
         jobResponsibilities: [],
         startDate: '11/11/2016',
         endDate: '04/28/2018',
-        techStack: ['Angular 4+', 'Javascript', 'jquery', 'RestAPI', '.NET', 'SCSS', 'CSS3', 'Jasmine.js']
+        techStack: ['Angular 4+', 'Javascript', 'jquery', 'RestAPI', '.NET', 'SCSS', 'CSS3', 'Jasmine.js'],
+        user: user1Id
     },
     {
         title: 'Job in CDW',
@@ -49,7 +77,8 @@ const data = {
         jobResponsibilities: [],
         startDate: '02/20/2015',
         endDate: '11/01/2016',
-        techStack: ['Javascript', 'Jquery', 'CSS3','SCSS', 'Webpack', 'Gulp.js', 'Karma.js','Mocha', 'Chai']
+        techStack: ['Javascript', 'Jquery', 'CSS3','SCSS', 'Webpack', 'Gulp.js', 'Karma.js','Mocha', 'Chai'],
+        user: user1Id
     }
 ]};
 

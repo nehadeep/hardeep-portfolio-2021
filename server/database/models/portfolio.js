@@ -18,6 +18,7 @@ const portfolioSchema = new Schema({
     startDate: {type:Date, required: true},
     endDate: Date,
     techStack: [{type: String}],
+    user: {type: Schema.Types.ObjectId, ref: 'User'},
     createdAt: {type:Date, default: Date.now}
 
 });

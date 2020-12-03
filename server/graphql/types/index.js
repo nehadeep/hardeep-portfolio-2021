@@ -41,3 +41,17 @@ exports.portfolioTypes = `
      }
     
 `;
+
+exports.userTypes = `
+   
+   input SignUpInput{
+     avatar: String
+     email: String
+     name: String
+     userName: String!
+     password: String!
+     passwordConfirmation: String!
+     
+   }
+
+`;

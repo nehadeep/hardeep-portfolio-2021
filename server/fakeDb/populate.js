@@ -6,7 +6,9 @@ const fakeDb = require('./fakeDb');
    mongoose.connect(config.DB_URI,
         {
             useNewUrlParser: true,
-            useUnifiedTopology: true
+            useUnifiedTopology: true,
+            useFindAndModify: false,
+            useCreateIndex: true,
         }, async ()=>{
             console.log("starting populating DB.....");
             await fakeDb.populate();
