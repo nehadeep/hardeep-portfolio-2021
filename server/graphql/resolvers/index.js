@@ -1,19 +1,18 @@
 
 const { portfoliosData }= require('../../resources/portfolios_data');
 
+const Portfolio = require('../../database/models/portfolio');
+
 const data = {
     portfolios : portfoliosData
 };
 
 exports.portfoliosQueries = {
-    hello: () =>{
-        return "hello"
-    },
     portfolio: (root,{id}) =>{
-        return data.portfolios.find(p=> p._id === id)
+        return Portfolio.findById(id);
     },
     portfolios: () => {
-        return data.portfolios;
+        return Portfolio.find({});
     },
 
 };

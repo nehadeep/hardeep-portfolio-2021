@@ -1,17 +1,22 @@
 import { gql} from '@apollo/client';
-//import { gql } from "apollo-boost";
+
+
 export const GET_PORTFOLIO = gql`
          query Portfolio($id:ID){ 
           portfolio (id:$id) {
             _id, 
             title, 
-            company,
-            companyWebsite,
-            location,
+           company{
+             name,
+             city,
+             state,
+             country,
+            },
             jobTitle,
             description,
             startDate,
-            endDate
+            endDate,
+            techStack
             }
           }  
   `;
@@ -21,13 +26,17 @@ export const GET_PORTFOLIOS = gql`
           portfolios {
             _id, 
             title, 
-            company,
-            companyWebsite,
-            location,
+            company{
+             name,
+             city,
+             state,
+             country,
+            },
             jobTitle,
             description,
             startDate,
-            endDate
+            endDate,
+            techStack
             }
           }  
  `;
@@ -36,23 +45,29 @@ export const CREATE_PORTFOLIO = gql`
     mutation CreatePortfolio { 
           createPortfolio(input : {
             title: "New Job", 
-            company: "New Company",
-            companyWebsite : "New Website",
-            location: "New Location",
-            jobTitle: "Job Title",
+            company: {
+             name:"create company",
+             city:"create city",
+             state: "create state",
+             country: "create country",
+            },
+            jobTitle: "create Job Title",
             description: "Very pleasant",
             startDate: "12/03/2019",
-            endDate: "Present"
+            endDate: "12/3/2020"
             }) {
                 _id, 
                 title, 
-                company,
-                companyWebsite,
-                location,
+                company{
+                 name,
+                 city,
+                 state,
+                 country,
+                 },
                 jobTitle,
                 description,
                 startDate,
-                endDate
+                endDate,
             }
           }
           `;
@@ -62,19 +77,25 @@ export const UPDATE_PORTFOLIO = gql`
         mutation UpdatePortfolio($id: ID) { 
           updatePortfolio(id: $id, input : {
             title: "update Job", 
-            company: "update Company",
-            companyWebsite : "update Website",
-            location: "update Location",
+            company: {
+             name:"update company",
+             city:"update city",
+             state: "update state",
+             country: "updated company"
+             }
             jobTitle: "update Title",
             description: "update Very pleasant",
             startDate: "12/03/2019",
-            endDate: "update Present"
+            endDate: "09/12/2020"
             }) {
                 _id, 
                 title, 
-                company,
-                companyWebsite,
-                location,
+                company{
+                 name,
+                 city,
+                 state,
+                 country,
+                 },
                 jobTitle,
                 description,
                 startDate,

@@ -1,44 +1,21 @@
-import axios from 'axios';
 import PortfolioCard from "@/components/portfolios/PortfolioCard";
 
 import Link from "next/link";
-import {useLazyQuery, useMutation, useQuery} from "@apollo/client";
-import {GET_PORTFOLIOS, CREATE_PORTFOLIO} from "@/apollo/queries";
+
 import withApollo from "@/hoc/withApollo";
 import { getDataFromTree } from '@apollo/react-ssr';
-import {DELETE_PORTFOLIO, UPDATE_PORTFOLIO} from "../../apollo/queries";
+import {useCreatePortfolio, useDeletePortfolio, useGetPortfolio, useUpdatePortfolio} from "@/apollo/actions";
 
 
 const Portfolios = () =>{
 
-    const {loading, data} = useQuery(GET_PORTFOLIOS); //get all the portfolios
+    const {loading, data} = useGetPortfolio(); //get all the portfolios
 
-    const [createPortfolioHandler] = useMutation(CREATE_PORTFOLIO, //To create portfolios
+    const [createPortfolioHandler] = useCreatePortfolio(); //To create portfolios
 
-        {
+    const [updatePortfolioHandler] = useUpdatePortfolio();  //To update portfolios
 
-            update(cache, {data:{createPortfolio}}){
-             const {portfolios} = cache.readQuery({query: GET_PORTFOLIOS});
-                cache.writeQuery({
-                    query: GET_PORTFOLIOS,
-                    data: {portfolios: [...portfolios, createPortfolio]}
-                })
-        }
-        });
-
-    const [updatePortfolioHandler] = useMutation(UPDATE_PORTFOLIO);  //To update portfolios
-
-
-    const [deletePortfolioHandler] = useMutation(DELETE_PORTFOLIO, { //to delete portfolios
-        update(cache, {data:{deletePortfolio}}){
-            const {portfolios} = cache.readQuery({query: GET_PORTFOLIOS});
-             const newPortfolios = portfolios.filter(p=>p._id!== deletePortfolio);
-            cache.writeQuery({
-                query: GET_PORTFOLIOS,
-                data: {portfolios: newPortfolios}
-            })
-        }
-    });
+    const [deletePortfolioHandler] = useDeletePortfolio();
 
     const portfolios = data && data.portfolios || [];
 

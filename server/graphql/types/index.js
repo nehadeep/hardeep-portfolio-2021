@@ -1,24 +1,43 @@
 
-
-const portfolioFields = `
+const portfolioFields = `        
         title: String,
-        company: String,
-        companyWebsite: String,
-        location: String,
         jobTitle: String,
         description: String,
+        jobResponsibilities: [String],
         startDate: String,
         endDate: String,
+        techStack: [String]
 `;
 
 exports.portfolioTypes = `
+
+         type company {
+                name: String,
+                city: String,
+                state: String,
+                country: String,
+                zipCode: String,
+                website: String,
+           }
+         input companyData {
+                name: String,
+                city: String,
+                state: String,
+                country: String,
+                zipCode: String,
+                website: String,
+           }
+           
   type Portfolio {
         _id: ID,
-        ${portfolioFields}
+        ${portfolioFields},
+         company: company,
+        
     }
     
     input PortfolioInput {
-       ${portfolioFields}
+       ${portfolioFields},
+        company: companyData
      }
     
 `;

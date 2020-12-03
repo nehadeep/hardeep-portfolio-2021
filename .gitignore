@@ -1,5 +1,5 @@
 
-
+/server/config/dev.js
 # dependencies
 /node_modules
 /.pnp
