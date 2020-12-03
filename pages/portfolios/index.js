@@ -32,7 +32,7 @@ const Portfolios = () =>{
                 <section className="pb-5">
                     <div className="row">
                         { portfolios.map(portfolio=>
-                            <div className="col-md-4" key={portfolio._id}>
+                            <div className="col-md-12" key={portfolio._id}>
                                 <Link href='/portfolios/[id]' as={`/portfolios/${portfolio._id}`}>
                                     <a className="card-link">
                                      <PortfolioCard portfolio={portfolio}/>
