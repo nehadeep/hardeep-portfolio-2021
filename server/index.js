@@ -11,13 +11,19 @@ const handle = app.getRequestHandler();
 
 
 
-
 const db = require('./database');
 
     db.connect(); //connect to DB
 
+const middlewares = require('./middlewares');
+
+
+
 app.prepare().then(() => {
     const server = express();
+
+    middlewares.init(server, db);
+
 
     const apolloServer = require('./graphql').createApolloServer();
     apolloServer.applyMiddleware({app: server});
@@ -27,7 +33,7 @@ app.prepare().then(() => {
     });
 
     server.listen(port, (err) => {
-        if (err) throw err
+        if (err) throw err;
         console.log(`> Ready on http://localhost:${port}`)
     });
 });

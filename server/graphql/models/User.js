@@ -5,9 +5,7 @@ class User {
         this.Model = model
     }
 
-    signIn(){
 
-    }
 
     signUp(signUpData){
 
@@ -17,6 +15,17 @@ class User {
             throw new Error('Password and confirm password must match.')
         }
         return this.Model.create(signUpData)
+
+    }
+
+    async signIn(signInData, ctx){
+        try{
+            const user = await ctx.authenticate(signInData);
+            return user;
+
+        } catch (e) {
+            return e;
+        }
 
     }
     signOut(){

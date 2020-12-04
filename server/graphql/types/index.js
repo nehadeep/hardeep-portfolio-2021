@@ -43,6 +43,14 @@ exports.portfolioTypes = `
 `;
 
 exports.userTypes = `
+
+ type User{
+ _id: ID
+  avatar: String
+  userName: String
+  email: String
+  role: String
+ }
    
    input SignUpInput{
      avatar: String
@@ -52,6 +60,11 @@ exports.userTypes = `
      password: String!
      passwordConfirmation: String!
      
+   }
+   
+   input SignInInput {
+       email: String!
+       password: String!
    }
 
 `;

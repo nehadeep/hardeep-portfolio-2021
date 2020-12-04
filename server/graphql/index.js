@@ -7,6 +7,8 @@ const {portfolioMutations, portfoliosQueries, userMutations} = require('./resolv
 
 const {portfolioTypes, userTypes} = require('./types');
 
+const {buildAuthContext} = require('./context');
+
 
 //GRAPHQL models
 const Portfolio = require('./models/Portfolio');
@@ -39,7 +41,7 @@ exports.createApolloServer = () =>{
             deletePortfolio(id: ID) : ID
             signUp(input: SignUpInput): String
 
-            signIn: String
+            signIn(input: SignInInput): User
             signOut: String
             
           }
@@ -58,7 +60,8 @@ exports.createApolloServer = () =>{
     };
 
     const apolloServer = new ApolloServer({typeDefs, resolvers,
-        context:()=> ({
+        context:({req})=> ({
+            ...buildAuthContext(req),
             models: {
                 Portfolio: new Portfolio(databasePortfolio),
                 User: new User(databaseUser)
