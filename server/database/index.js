@@ -12,7 +12,7 @@ require('./models/portfolio');
 require('./models/user');
 
 exports.connect = () =>{
-    mongoose.connect(config.DB_URI,
+    mongoose.connect(process.env.DB_URI,
         {
             useNewUrlParser: true,
             useUnifiedTopology: true,
@@ -25,7 +25,7 @@ exports.connect = () =>{
 
 exports.initSessionStore = () =>{
     const store = new mongoDBStore({
-        uri: config.DB_URI,
+        uri: process.env.DB_URI,
         collection: 'portfolioSessions'
     });
     return store;

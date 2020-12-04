@@ -3,7 +3,7 @@ const config = require('../config/dev');
 const fakeDb = require('./fakeDb');
 
 
-   mongoose.connect(config.DB_URI,
+   mongoose.connect(process.env.DB_URI,
         {
             useNewUrlParser: true,
             useUnifiedTopology: true,
