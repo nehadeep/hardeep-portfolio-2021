@@ -1,57 +1,63 @@
 import React from "react";
 
 import {useState} from 'react'
-
+import { useForm } from "react-hook-form";
 const RegisterForm  = ({onSubmit})=>{
 
-    const [form, setForm] = useState({});
+    const {register, handleSubmit} = useForm();
 
-    const handleChange = (e) =>{
 
-        const {name, value} = e.target;
-        setForm({
-            ...form,
-            [name]: value
-        })
 
-    };
+   // const [form, setForm] = useState({});
 
-    const handleSubmit = () =>{
-        onSubmit(form);
-    };
+    // const handleChange = (e) =>{
+    //
+    //     const {register, handleSubmit} = useForm();
+    //
+    //     const {name, value} = e.target;
+    //     setForm({
+    //         ...form,
+    //         [name]: value
+    //     })
+    //
+    // };
+
+    // const handleSubmit = () =>{
+    //     onSubmit(form);
+    // };
     return(
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit(onSubmit)}>
             <div className="form-group">
                 <label htmlFor="avatar">Avatar</label>
-                <input onChange={handleChange}
+                <input ref={register}
                     type="text"
                     className="form-control" name="avatar"
                     id="avatar" />
             </div>
             <div className="form-group">
                 <label htmlFor="username">Username</label>
-                <input onChange={handleChange}
+                <input ref={register}
                     type="text"
                     className="form-control" name="username"
                     id="username" />
             </div>
             <div className="form-group">
                 <label htmlFor="email">Email</label>
-                <input onChange={handleChange}
+                <input ref={register}
                     type="email"
                     className="form-control" name="email"
                     id="email" />
             </div>
             <div className="form-group">
                 <label htmlFor="password">Password</label>
-                <input onChange={handleChange}
+                <input ref={register}
                     type="password"
                     className="form-control" name="password"
                     id="password" />
             </div>
             <div className="form-group">
                 <label htmlFor="passwordConfirmation">Password Confirmation</label>
-                <input onChange={handleChange}
+                <input ref={register}
                     type="password"
                     className="form-control" name="passwordConfirmation"
                     id="passwordConfirmation" />

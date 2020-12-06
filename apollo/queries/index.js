@@ -112,3 +112,23 @@ export const DELETE_PORTFOLIO = gql`
         mutation DeletePortfolio($id: ID) { 
           deletePortfolio(id: $id)
   }`;
+
+
+export const SIGN_UP = gql`
+mutation SignUp(
+ $avatar: String
+ $userName: String!
+ $email: String!
+ $password: String!
+ $passwordConfirmation: String!
+ ) {
+   signUp(input:{
+     avatar: $avatar
+     userName: $userName
+     email: $email
+     password: $password
+     passwordConfirmation: $passwordConfirmation
+   })
+   
+   }
+`;

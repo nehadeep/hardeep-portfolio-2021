@@ -48,15 +48,16 @@ exports.userTypes = `
  _id: ID
   avatar: String
   userName: String
+  name: String
   email: String
   role: String
  }
    
    input SignUpInput{
      avatar: String
-     email: String
-     name: String
      userName: String!
+     name: String
+     email: String!
      password: String!
      passwordConfirmation: String!
      
