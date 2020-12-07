@@ -35,11 +35,11 @@ const RegisterForm  = ({onSubmit})=>{
                     id="avatar" />
             </div>
             <div className="form-group">
-                <label htmlFor="username">Username</label>
+                <label htmlFor="userName">Username</label>
                 <input ref={register}
                     type="text"
-                    className="form-control" name="username"
-                    id="username" />
+                    className="form-control" name="userName"
+                    id="userName" />
             </div>
             <div className="form-group">
                 <label htmlFor="email">Email</label>

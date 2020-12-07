@@ -4,12 +4,14 @@ import React from 'react';
 import RegisterForm from "../components/forms/RegisterForm";
 import {SIGN_UP} from "../apollo/queries";
 import withApollo from "@/hoc/withApollo";
-import { getDataFromTree } from '@apollo/react-ssr';
 import { Query, Mutation, Subscription } from '@apollo/client/react/components';
-import { graphql } from '@apollo/client/react/hoc';
+import Redirect from "@/components/shared/Redirect";
 
 const Register =  () => {
 
+    const errorMessage = (error) => {
+        return error.graphQLErrors && error.graphQLErrors[0].message || 'Oops something went wrong.'
+    }
 
     return (
         <>
@@ -21,10 +23,10 @@ const Register =  () => {
                             {(signUpUser, {data, error}) =>
                                 <>
                                     <RegisterForm onSubmit = {registerData =>{
-                                        console.log("data", registerData)
                                        signUpUser({variables: registerData})
                                     }}/>
-
+                                    {data && data.signUp && <Redirect to="/login" />}
+                                    {error && <div className="alert alert-danger">{errorMessage(error)}</div> }
                                 </>
                             }
                         </Mutation>

@@ -7,14 +7,23 @@ class User {
 
 
 
-    signUp(signUpData){
+   async signUp(signUpData){
 
        // console.log("sign update", signUpData)
 
         if(signUpData.password!== signUpData.passwordConfirmation){
             throw new Error('Password and confirm password must match.')
         }
-        return this.Model.create(signUpData)
+        try{
+            return await this.Model.create(signUpData)
+
+        }catch (e) {
+            if(e.code && e.code ===11000) {
+                throw new Error('User with this email already exists.')
+            }
+
+            throw e;
+        }
 
     }
 
