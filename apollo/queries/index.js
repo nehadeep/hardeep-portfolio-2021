@@ -132,3 +132,23 @@ mutation SignUp(
    
    }
 `;
+
+export const SIGN_IN = gql`
+mutation SignIn(
+$email: String!
+$password: String!
+) {
+  signIn(input:{
+   email: $email
+   password: $password
+ }) {
+  _id
+   avatar
+   userName
+   name
+   email
+   role
+  }
+ }
+    
+`;
