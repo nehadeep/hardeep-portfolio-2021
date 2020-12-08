@@ -6,7 +6,7 @@ import {useQuery, useLazyQuery} from "@apollo/client";
 import {GET_PORTFOLIO} from "@/apollo/queries";
 import withApollo from "@/hoc/withApollo";
 import { getDataFromTree } from '@apollo/react-ssr';
-import BaseLayout from "../../layouts/BaseLayout";
+import BaseLayout from "../../../layouts/BaseLayout";
 
 // const fetchPortfoliosById = (id) =>{ //replaced with apollo client
 //     const query = `query Portfolio($id:ID){

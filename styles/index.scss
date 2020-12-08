@@ -821,3 +821,14 @@ html {
     }
   }
 }
+
+
+.portfolio-actions{
+  display: flex;
+  justify-content: flex-end;
+  margin: 10px;
+}
+
+.pull-right{
+  float: right;
+}

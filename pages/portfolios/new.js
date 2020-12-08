@@ -20,7 +20,7 @@ const PortfolioNew =  () => {
 
     const createPortfolio = async (data) =>{
         await createPortfolioHandler({variables: data});
-        router.push('./portfolios');
+        router.push('./');
 
     }
     return (

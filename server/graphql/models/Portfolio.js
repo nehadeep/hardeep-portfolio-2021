@@ -4,6 +4,7 @@
 class Portfolio {
 
     constructor(model, user) {
+        console.log("in cunsictir", user)
         this.Model = model;
         this.user = user;
         this.writeRights = ['instructor', 'admin']
@@ -17,7 +18,7 @@ class Portfolio {
    }
 
    create(data){
-        if(!this.user || this.writeRights.includes(this.user.role)) {
+        if(!this.user || !this.writeRights.includes(this.user.role)) {
             throw new Error('Not Authorized!')
         }
 

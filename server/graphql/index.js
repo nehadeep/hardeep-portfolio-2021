@@ -62,6 +62,7 @@ exports.createApolloServer = () =>{
 
     const apolloServer = new ApolloServer({typeDefs, resolvers,
         context:({req})=> ({
+
             ...buildAuthContext(req),
             models: {
                 Portfolio: new Portfolio(databasePortfolio, req.user),
