@@ -5,7 +5,13 @@ class User {
         this.Model = model
     }
 
+    getAuthUser(ctx){
+        if(ctx.isAuthenticated()){
+            return ctx.getUser();
+        }
 
+        return null;
+    }
 
    async signUp(signUpData){
 

@@ -152,3 +152,20 @@ $password: String!
  }
     
 `;
+
+export const SIGN_OUT = gql`
+mutation SignOut { signOut}
+`
+
+export const GET_USER = gql`
+query User {
+    user {
+      _id
+       avatar
+       userName
+       name
+       email
+       role
+    }
+}
+`;

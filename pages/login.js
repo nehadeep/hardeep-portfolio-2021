@@ -2,8 +2,6 @@
 
 import React from 'react';
 import LoginForm from "../components/forms/LoginForm";
-import {Mutation} from "@apollo/client/react/components";
-import {SIGN_IN} from "@/apollo/queries";
 import withApollo from "@/hoc/withApollo";
 import {useSignIn} from "@/apollo/actions";
 import Redirect from "../components/shared/Redirect";

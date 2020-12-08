@@ -1,5 +1,3 @@
-
-
 exports.portfoliosQueries = {
     portfolio: (root,{id}, ctx) =>{
         return ctx.models.Portfolio.getById(id);
@@ -9,6 +7,7 @@ exports.portfoliosQueries = {
     },
 
 };
+
 
 exports.portfolioMutations = {
     createPortfolio: async (root,{input},ctx) =>{
@@ -24,6 +23,13 @@ exports.portfolioMutations = {
         return deletedId._id;
     },
 
+
+};
+
+exports.userQueries = {
+    user: (root,args ,ctx) =>{
+        return ctx.models.User.getAuthUser(ctx);
+    }
 
 };
 

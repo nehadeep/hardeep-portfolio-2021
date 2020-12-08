@@ -1,7 +1,7 @@
 
 const {ApolloServer, gql} = require('apollo-server-express');
 //resolvers
-const {portfolioMutations, portfoliosQueries, userMutations} = require('./resolvers');
+const {userQueries,portfolioMutations, portfoliosQueries, userMutations} = require('./resolvers');
 
 //types
 
@@ -32,6 +32,7 @@ exports.createApolloServer = () =>{
           type Query {
            portfolio(id: ID): Portfolio
            portfolios: [Portfolio]
+           user: User
           }
           
           type Mutation {
@@ -50,7 +51,8 @@ exports.createApolloServer = () =>{
     //the root provides a resolver for each api end point --> resolvers
     const resolvers = {
         Query:{
-            ...portfoliosQueries
+            ...portfoliosQueries,
+            ...userQueries
         },
         Mutation: {
             ...portfolioMutations,
