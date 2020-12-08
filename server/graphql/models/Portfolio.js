@@ -3,8 +3,10 @@
 
 class Portfolio {
 
-    constructor(model) {
+    constructor(model, user) {
         this.Model = model;
+        this.user = user;
+        this.writeRights = ['instructor', 'admin']
     }
    getAll(){
       return this.Model.find({});
@@ -15,7 +17,12 @@ class Portfolio {
    }
 
    create(data){
-      return this.Model.create(data);
+        if(!this.user || this.writeRights.includes(this.user.role)) {
+            throw new Error('Not Authorized!')
+        }
+
+        data.user = this.user;
+        return this.Model.create(data);
    }
 
    findAndUpdate(id, data){

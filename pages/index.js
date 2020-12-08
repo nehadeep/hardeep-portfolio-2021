@@ -1,7 +1,8 @@
+import BaseLayout from "../layouts/BaseLayout";
 
 
 const Home = () => (
-    <>
+    <BaseLayout page="Home">
         <section className="section-title">
           <div className="px-2">
             <div className="pt-5 pb-4">
@@ -148,7 +149,7 @@ const Home = () => (
       </div>
       {/* REPLIER ENDS */}
 
-    </>
+    </BaseLayout>
   )
 
   export default Home

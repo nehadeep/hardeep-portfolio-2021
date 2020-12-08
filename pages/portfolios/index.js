@@ -4,14 +4,15 @@ import Link from "next/link";
 
 import withApollo from "@/hoc/withApollo";
 import { getDataFromTree } from '@apollo/react-ssr';
-import {useCreatePortfolio, useDeletePortfolio, useGetPortfolio, useUpdatePortfolio} from "@/apollo/actions";
+import {useDeletePortfolio, useGetPortfolio, useUpdatePortfolio} from "@/apollo/actions";
+import BaseLayout from "../../layouts/BaseLayout";
+import React from "react";
 
 
 const Portfolios = () =>{
 
     const {loading, data} = useGetPortfolio(); //get all the portfolios
 
-    const [createPortfolioHandler] = useCreatePortfolio(); //To create portfolios
 
     const [updatePortfolioHandler] = useUpdatePortfolio();  //To update portfolios
 
@@ -20,14 +21,14 @@ const Portfolios = () =>{
     const portfolios = data && data.portfolios || [];
 
     return (
-        <>
+        <BaseLayout>
                 <section className="section-title">
                     <div className="px-2">
                         <div className="pt-5 pb-4">
                             <h1>Portfolios</h1>
                         </div>
                     </div>
-                    <button onClick={createPortfolioHandler} className="btn btn-primary">Create Portfolio</button>
+                    {/*<button onClick={createPortfolioHandler} className="btn btn-primary">Create Portfolio</button>*/}
                 </section>
                 <section className="pb-5">
                     <div className="row">
@@ -44,7 +45,7 @@ const Portfolios = () =>{
                         )}
                     </div>
                 </section>
-        </>
+        </BaseLayout>
     )
 };
 

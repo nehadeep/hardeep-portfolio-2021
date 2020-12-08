@@ -20,6 +20,7 @@ export const useCreatePortfolio= () => useMutation(CREATE_PORTFOLIO, //To create
     {
 
         update(cache, {data:{createPortfolio}}){
+            debugger;
             const {portfolios} = cache.readQuery({query: GET_PORTFOLIOS});
             cache.writeQuery({
                 query: GET_PORTFOLIOS,

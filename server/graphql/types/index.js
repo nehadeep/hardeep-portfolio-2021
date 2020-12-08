@@ -28,7 +28,7 @@ exports.portfolioTypes = `
                 website: String,
            }
            
-  type Portfolio {
+  type Portfolio {  
         _id: ID,
         ${portfolioFields},
          company: company,

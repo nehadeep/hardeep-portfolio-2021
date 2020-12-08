@@ -41,7 +41,6 @@ exports.createApolloServer = () =>{
             updatePortfolio(id: ID, input: PortfolioInput) : Portfolio
             deletePortfolio(id: ID) : ID
             signUp(input: SignUpInput): String
-
             signIn(input: SignInInput): User
             signOut: Boolean
             
@@ -65,7 +64,7 @@ exports.createApolloServer = () =>{
         context:({req})=> ({
             ...buildAuthContext(req),
             models: {
-                Portfolio: new Portfolio(databasePortfolio),
+                Portfolio: new Portfolio(databasePortfolio, req.user),
                 User: new User(databaseUser)
             }
         })
