@@ -11,7 +11,7 @@ const Login =  () => {
     const errorMessage = (error) => {
         return error.graphQLErrors && error.graphQLErrors[0].message || 'Oops something went wrong.'
     }
-    const [signIn, {data, error}] = useSignIn();
+    const [signIn, {data, loading, error}] = useSignIn();
 
     return (
         <>
@@ -20,7 +20,7 @@ const Login =  () => {
                         <div className="col-md-5 mx-auto">
                             <h1 className="page-title">Login</h1>
 
-                                <LoginForm onSubmit={loginData=> signIn({variables: loginData})}/>
+                                <LoginForm loading={loading} onSubmit={loginData=> signIn({variables: loginData})}/>
                                 {data && data.signIn && <Redirect to="/" />}
                                 {error && <div className="alert alert-danger">{errorMessage(error)}</div> }
 
