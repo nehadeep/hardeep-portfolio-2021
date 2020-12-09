@@ -4,18 +4,19 @@ import { gql} from '@apollo/client';
 export const GET_PORTFOLIO = gql`
          query Portfolio($id:ID){ 
           portfolio (id:$id) {
-            _id, 
-            title, 
+            _id
+            daysOfExperience @client
+            title
            company{
-             name,
-             city,
-             state,
-             country,
+             name
+             city
+             state
+             country
             },
-            jobTitle,
-            description,
-            startDate,
-            endDate,
+            jobTitle
+            description
+            startDate
+            endDate
             techStack
             }
           }  

@@ -1,3 +1,4 @@
+import {formatDate} from "@/utils/helperFun";
 
 
 const PortfolioCard = ({portfolio})=>{
@@ -9,7 +10,7 @@ const PortfolioCard = ({portfolio})=>{
                 <p className="card-text fs-2">{portfolio.description}</p>
             </div>
             <div className="card-footer no-border">
-                <small className="text-muted">{portfolio.startDate} - {portfolio.endDate}</small>
+                <small className="text-muted">{formatDate(portfolio.startDate)} - {portfolio.endDate?formatDate(portfolio.endDate): 'Present'}</small>
             </div>
         </div>
     )
