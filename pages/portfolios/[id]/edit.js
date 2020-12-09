@@ -7,13 +7,19 @@ import {useCreatePortfolio} from "@/apollo/actions";
 import React from "react";
 import {useRouter} from "next/router";
 import BaseLayout from "../../../layouts/BaseLayout";
-import {useUpdatePortfolio} from "@/apollo/actions";
+import {useUpdatePortfolio, useGetPortfolio} from "@/apollo/actions";
 
 
 const PortfolioEdit =  () => {
     const router = useRouter();
+    const {id} = router.query;
+    const { loading, data } = useGetPortfolio({variables: {id}});
+
     const [updatePortfolioHandler, {error}] = useUpdatePortfolio();  //To update portfolios
 
+    const errorMessage = (error) => {
+        return error.graphQLErrors && error.graphQLErrors[0].message || 'Oops something went wrong.'
+    }
      const editPortfolio = async () =>{
          await updatePortfolioHandler();
      };
@@ -24,8 +30,11 @@ const PortfolioEdit =  () => {
                 <div className="row">
                     <div className="col-md-6 mx-auto">
                         <h1 className="page-title">Edit Portfolio</h1>
-
-                        <PortfolioNewForm/>
+                        { data &&
+                            <PortfolioNewForm initialData={data.portfolio} create={false}
+                            onSubmit={(data)=>updatePortfolioHandler({variables: {id, ...data}})}/>
+                        }
+                        {error && <div className="alert alert-danger">{errorMessage(error)}</div> }
 
                     </div>
                 </div>

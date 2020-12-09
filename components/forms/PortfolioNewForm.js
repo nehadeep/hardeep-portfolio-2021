@@ -2,17 +2,27 @@ import {useForm} from "react-hook-form";
 import DatePicker from "react-datepicker";
 import {useEffect, useState} from "react";
 
-const PortfolioNewForm = ({onSubmit})=>{
+const PortfolioNewForm = ({onSubmit, initialData={}, create})=>{
 
     const [startDate, setStartDate] = useState(null);
     const [endDate, setEndDate] = useState(null);
 
-    const{ register, handleSubmit, setValue} = useForm();
+    const{ register, handleSubmit, setValue} = useForm({defaultValues: initialData});
 
     useEffect(()=>{
         register({name: 'startDate'});
         register({name: 'endDate'})
     }, [register]);
+
+    useEffect(()=>{ //initial data for start date and end data
+        if(initialData.startDate){
+            setStartDate(new Date(+initialData.startDate));
+        }
+
+        if(initialData.endDate){
+            setEndDate(new Date(+initialData.endDate));
+        }
+    }, [initialData]);
 
     const handleDateChange = (dateType, setDate) => date=>{
         setValue(dateType, date?new Date(date.setHours(0, 0, 0 ,0)).toISOString():date);
@@ -36,7 +46,7 @@ const PortfolioNewForm = ({onSubmit})=>{
                 <label htmlFor="name">Company Name</label>
                 <input
                     ref={register}
-                    name="name"
+                    name="company.name"
                     type="text"
                     className="form-control"
                     id="name"/>
@@ -45,7 +55,7 @@ const PortfolioNewForm = ({onSubmit})=>{
                 <label htmlFor="city">Company City</label>
                 <input
                     ref={register}
-                    name="city"
+                    name="company.city"
                     type="text"
                     className="form-control"
                     id="city"/>
@@ -54,7 +64,7 @@ const PortfolioNewForm = ({onSubmit})=>{
                 <label htmlFor="state">Company State</label>
                 <input
                     ref={register}
-                    name="state"
+                    name="company.state"
                     type="text"
                     className="form-control"
                     id="state"/>
@@ -63,7 +73,7 @@ const PortfolioNewForm = ({onSubmit})=>{
                 <label htmlFor="country">Company Country</label>
                 <input
                     ref={register}
-                    name="country"
+                    name="company.country"
                     type="text"
                     className="form-control"
                     id="country"/>
@@ -126,7 +136,13 @@ const PortfolioNewForm = ({onSubmit})=>{
 
             <button
                 type="submit"
-                className="btn btn-primary">Create
+                className="btn btn-primary">
+                {
+                    create && 'Create'
+                }
+                {
+                    !create && 'Update'
+                }
             </button>
         </form>
     )

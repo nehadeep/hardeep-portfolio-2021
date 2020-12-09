@@ -4,16 +4,14 @@ import Link from "next/link";
 
 import withApollo from "@/hoc/withApollo";
 import { getDataFromTree } from '@apollo/react-ssr';
-import {useDeletePortfolio, useGetPortfolio, useUpdatePortfolio} from "@/apollo/actions";
+import {useDeletePortfolio, useGetPortfolios, useUpdatePortfolio} from "@/apollo/actions";
 import BaseLayout from "../../layouts/BaseLayout";
 import React from "react";
 
 
 const Portfolios = () =>{
 
-    const {loading, data} = useGetPortfolio(); //get all the portfolios
-
-
+    const {loading, data} = useGetPortfolios(); //get all the portfolios
 
     const [deletePortfolioHandler] = useDeletePortfolio();
 

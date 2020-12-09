@@ -7,6 +7,7 @@ import {GET_PORTFOLIO} from "@/apollo/queries";
 import withApollo from "@/hoc/withApollo";
 import { getDataFromTree } from '@apollo/react-ssr';
 import BaseLayout from "../../../layouts/BaseLayout";
+import {useGetPortfolio} from "../../../apollo/actions";
 
 // const fetchPortfoliosById = (id) =>{ //replaced with apollo client
 //     const query = `query Portfolio($id:ID){
@@ -32,7 +33,7 @@ import BaseLayout from "../../../layouts/BaseLayout";
 
 const PortfolioDetail = ({query}) =>{
 
-    const { loading, data , error} = useQuery(GET_PORTFOLIO, {variables: {id: query.id}});
+    const { loading, data , error} = useGetPortfolio({variables: {id: query.id}});
 
     const portfolio = data && data.portfolio ||{};
 

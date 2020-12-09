@@ -4,7 +4,6 @@
 class Portfolio {
 
     constructor(model, user) {
-        console.log("in cunsictir", user)
         this.Model = model;
         this.user = user;
         this.writeRights = ['instructor', 'admin']
@@ -27,7 +26,7 @@ class Portfolio {
    }
 
    findAndUpdate(id, data){
-       return this.Model.findOneAndUpdate({_id: id}, data, {new: true});
+       return this.Model.findOneAndUpdate({_id: id}, data, {new: true, runValidators: true});
    }
 
    findAndDelete(id){

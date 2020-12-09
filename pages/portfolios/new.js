@@ -31,7 +31,7 @@ const PortfolioNew =  () => {
                         <h1 className="page-title">Create New Portfolio</h1>
 
                         <PortfolioNewForm
-                            onSubmit={createPortfolio}/>
+                            onSubmit={createPortfolio} create={true}/>
 
                             {error && <div className="alert alert-danger">{errorMessage(error)}</div> }
 

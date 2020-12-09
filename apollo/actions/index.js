@@ -3,6 +3,7 @@ import {
     CREATE_PORTFOLIO,
     DELETE_PORTFOLIO,
     GET_PORTFOLIOS,
+    GET_PORTFOLIO,
     GET_USER,
     SIGN_IN,
     SIGN_OUT,
@@ -13,7 +14,10 @@ import {
 
 
 
-export const useGetPortfolio = () => useQuery(GET_PORTFOLIOS); //get all the portfolios
+export const useGetPortfolios = () => useQuery(GET_PORTFOLIOS); //get all the portfolios
+
+export const useGetPortfolio = (options) => useQuery(GET_PORTFOLIO, options); //get all the portfolios
+
 
 export const useCreatePortfolio= () => useMutation(CREATE_PORTFOLIO, //To create portfolios
 
