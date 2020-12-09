@@ -1,6 +1,7 @@
 import React from "react";
 import {useGetUser} from "../apollo/actions";
 import Redirect from "../components/shared/Redirect";
+import SpinningLoader from "../components/shared/Loader";
 
 export default (WrappedComponent, role) => (props) => {
 
@@ -9,16 +10,20 @@ export default (WrappedComponent, role) => (props) => {
     if(
         !loading && (!user ||error) && typeof window!== 'undefined'
     ){
-       return <Redirect to="/login"/>
+       return <Redirect to="/login" query={{message:'NOT_AUTHENTICATED'}}/>
     }
     if(user){
         if(role && !role.includes(user.role)){
-            return <Redirect to="/login"/>
+            return <Redirect to="/login" query={{message:'NOT_AUTHORIZED'}}/>
         }
         return <WrappedComponent {...props}/>
-    }
+     }
 
-    return <p>Authenticating...</p>
+    return(
+        <div className="spinner-container">
+            <SpinningLoader variant="large"/>
+        </div>
+    )
 
 
 }
