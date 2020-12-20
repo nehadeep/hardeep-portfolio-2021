@@ -11,10 +11,8 @@ import BaseLayout from "../../layouts/BaseLayout";
 
 const PortfolioNew =  () => {
     const router = useRouter();
-    debugger;
     const [createPortfolioHandler, {error}] = useCreatePortfolio(); //To create portfolios
     const errorMessage = (error) => {
-        debugger;
         return error.graphQLErrors && error.graphQLErrors[0].message || 'Oops something went wrong.'
     };
 
