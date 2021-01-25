@@ -1,5 +1,6 @@
 import { gql} from '@apollo/client';
 
+//[techStackData] and companyData variables below come from how to define the queries in server
 
 export const GET_PORTFOLIO = gql`
          query Portfolio($id:ID){ 
@@ -17,7 +18,10 @@ export const GET_PORTFOLIO = gql`
             description
             startDate
             endDate
-            techStack
+             techStack{
+             label
+             value
+              }
             }
           }  
   `;
@@ -37,7 +41,10 @@ export const GET_PORTFOLIOS = gql`
             description,
             startDate,
             endDate,
-            techStack
+            techStack{
+             label,
+             value
+              }
             }
           }  
  `;
@@ -52,6 +59,8 @@ export const CREATE_PORTFOLIO = gql`
         $description: String
         $startDate: String
         $endDate: String
+        $techStack: [techStackData]    
+
     ) { 
           createPortfolio(input : {
             title: $title
@@ -60,6 +69,7 @@ export const CREATE_PORTFOLIO = gql`
             description: $description
             startDate: $startDate
             endDate: $endDate
+            techStack: $techStack
             }) {
                 _id, 
                 title, 
@@ -73,6 +83,10 @@ export const CREATE_PORTFOLIO = gql`
                 description,
                 startDate,
                 endDate,
+                techStack{
+                 label,
+                 value
+                }
             }
           }
           `;
@@ -86,7 +100,8 @@ export const UPDATE_PORTFOLIO = gql`
         $jobTitle: String
         $description: String
         $startDate: String
-        $endDate: String       
+        $endDate: String   
+        $techStack: [techStackData]    
          ) { 
           updatePortfolio(id: $id, input : {
             title: $title
@@ -94,7 +109,8 @@ export const UPDATE_PORTFOLIO = gql`
             jobTitle: $jobTitle
             description: $description
             startDate: $startDate
-            endDate: $endDate
+            endDate: $endDate,
+            techStack: $techStack
             }) {
                 _id, 
                 title, 
@@ -107,7 +123,11 @@ export const UPDATE_PORTFOLIO = gql`
                 jobTitle,
                 description,
                 startDate,
-                endDate
+                endDate,
+                techStack{
+                 label,
+                 value
+                }
             }
           }
 `;

@@ -1,17 +1,22 @@
 import {useForm} from "react-hook-form";
 import DatePicker from "react-datepicker";
 import {useEffect, useState} from "react";
+import Select from 'react-select'
+import {TECHSTACK} from "../../Models/techStackData";
 
 const PortfolioNewForm = ({onSubmit, initialData={}, create})=>{
 
     const [startDate, setStartDate] = useState(null);
     const [endDate, setEndDate] = useState(null);
+    const[techStackVal, setTechStack] = useState([]);
+
 
     const{ register, handleSubmit, setValue} = useForm({defaultValues: initialData});
 
     useEffect(()=>{
         register({name: 'startDate'});
-        register({name: 'endDate'})
+        register({name: 'endDate'});
+        register({name: 'techStack'});
     }, [register]);
 
     useEffect(()=>{ //initial data for start date and end data
@@ -22,6 +27,13 @@ const PortfolioNewForm = ({onSubmit, initialData={}, create})=>{
         if(initialData.endDate){
             setEndDate(new Date(+initialData.endDate));
         }
+        if(initialData.techStack && initialData.techStack.length) {
+
+            setTechStack(initialData.techStack.map(x=>x.value));
+
+            console.log("inota; data", initialData, techStackVal)
+        }
+
     }, [initialData]);
 
     const handleDateChange = (dateType, setDate) => date=>{
@@ -29,6 +41,12 @@ const PortfolioNewForm = ({onSubmit, initialData={}, create})=>{
         setDate(date);
     };
 
+    const handleTechStack = (e, type) =>{
+
+         setTechStack(Array.isArray(e) ? e.map(x => x.value) : []); //this actually filters the value of techStackVal below
+         console.log("values", e, techStackVal, type);
+         setValue(type, e);
+    }
 
     return(
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -98,6 +116,12 @@ const PortfolioNewForm = ({onSubmit, initialData={}, create})=>{
                     className="form-control"
                     id="description">
                </textarea>
+            </div>
+            <div className="form-group">
+                <label htmlFor="techStack">Environment</label>
+                <Select ref={register} value={TECHSTACK.filter((obj) => techStackVal.includes(obj.value))} isMulti isClearable
+                        onChange={(e)=>handleTechStack(e, 'techStack')} className="basic-multi-select"
+                        name="techStack" options={TECHSTACK} />
             </div>
 
             <div className="form-group">

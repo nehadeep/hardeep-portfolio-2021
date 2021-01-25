@@ -1,4 +1,9 @@
 
+const techStack = `
+ value: String,
+ label: String
+`;
+
 const portfolioFields = `        
         title: String,
         jobTitle: String,
@@ -6,7 +11,6 @@ const portfolioFields = `
         jobResponsibilities: [String],
         startDate: String,
         endDate: String,
-        techStack: [String]
 `;
 
 exports.portfolioTypes = `
@@ -19,6 +23,13 @@ exports.portfolioTypes = `
                 zipCode: String,
                 website: String,
            }
+           
+           type techStack {
+              value: String,
+              label: String
+           }
+           
+           
          input companyData {
                 name: String,
                 city: String,
@@ -28,16 +39,23 @@ exports.portfolioTypes = `
                 website: String,
            }
            
+           input techStackData {
+            value: String,
+            label: String
+           }
+           
   type Portfolio {  
         _id: ID,
         ${portfolioFields},
          company: company,
+         techStack : [techStack]
         
     }
     
     input PortfolioInput {
        ${portfolioFields},
         company: companyData
+        techStack : [techStackData]
      }
     
 `;

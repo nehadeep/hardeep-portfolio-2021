@@ -17,7 +17,12 @@ const portfolioSchema = new Schema({
     jobResponsibilities: [{type: String}],
     startDate: {type:Date, required: true},
     endDate: Date,
-    techStack: [{type: String}],
+    techStack: [
+        {
+            value:{type: String},
+            label:{type: String},
+        }
+        ],
     user: {type: Schema.Types.ObjectId, ref: 'User'},
     createdAt: {type:Date, default: Date.now}
 
