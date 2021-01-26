@@ -30,7 +30,7 @@ const UserSchema = new Schema({
         maxlength: [32, 'Minimum password Length is 32 characters.'],
     },
     role:{
-        enum: ['guest', 'admin', 'instructor'],
+        enum: ['guest', 'admin'],
         type: String,
         required: true,
         default: 'guest'

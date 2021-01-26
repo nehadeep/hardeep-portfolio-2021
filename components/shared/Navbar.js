@@ -51,38 +51,38 @@ const AppNavbar = () =>{
                            Resume 2021
                         </AppLink>
                     </Nav>
-                    { hasResponse &&
-                        <Nav>
-                            { user &&
-                                <>
-                                  <span className="nav-link mr-2">Welcome {user.userName}</span>
-                                    <NavDropdown className="mr-2" title="Manage" id="basic-nav-dropdown">
-                                        { (user.role === 'admin' ||user.role=== 'instructor') &&
-                                        <AppLink href="/portfolios/new" className="dropdown-item">
-                                            Create Portfolio
-                                        </AppLink>
+                    {/*{ hasResponse &&*/}
+                    {/*    <Nav>*/}
+                    {/*        { user &&*/}
+                    {/*            <>*/}
+                    {/*              <span className="nav-link mr-2">Welcome {user.userName}</span>*/}
+                    {/*                <NavDropdown className="mr-2" title="Manage" id="basic-nav-dropdown">*/}
+                    {/*                    { (user.role === 'admin' ||user.role=== 'instructor') &&*/}
+                    {/*                    <AppLink href="/portfolios/new" className="dropdown-item">*/}
+                    {/*                        Create Portfolio*/}
+                    {/*                    </AppLink>*/}
 
-                                        }
-                                    </NavDropdown>
-                                    <AppLink href="/logout" className="nav-link btn btn-danger">
-                                        Sign Out
-                                    </AppLink>
-                                </>
+                    {/*                    }*/}
+                    {/*                </NavDropdown>*/}
+                    {/*                <AppLink href="/logout" className="nav-link btn btn-danger">*/}
+                    {/*                    Sign Out*/}
+                    {/*                </AppLink>*/}
+                    {/*            </>*/}
 
-                            }
-                            { (error || !user) &&
-                                <>
-                                    <AppLink href="/register" className="mr-3 nav-link">
-                                        Sign Up
-                                    </AppLink>
-                                    <AppLink href="/login" className="mr-3 btn btn-success bg-green-2 bright">
-                                        Sign In
-                                    </AppLink>
-                                </>
-                            }
+                    {/*        }*/}
+                    {/*        { (error || !user) &&*/}
+                    {/*            <>*/}
+                    {/*                <AppLink href="/register" className="mr-3 nav-link">*/}
+                    {/*                    Sign Up*/}
+                    {/*                </AppLink>*/}
+                    {/*                <AppLink href="/login" className="mr-3 btn btn-success bg-green-2 bright">*/}
+                    {/*                    Sign In*/}
+                    {/*                </AppLink>*/}
+                    {/*            </>*/}
+                    {/*        }*/}
 
-                        </Nav>
-                    }
+                    {/*    </Nav>*/}
+                    {/*}*/}
                 </Navbar.Collapse>
             </Navbar>
         </div>
