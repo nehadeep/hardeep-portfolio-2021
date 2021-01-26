@@ -1,14 +1,10 @@
 
-const techStack = `
- value: String,
- label: String
-`;
 
 const portfolioFields = `        
         title: String,
         jobTitle: String,
         description: String,
-        jobResponsibilities: [String],
+        jobResponsibilities: String,
         startDate: String,
         endDate: String,
 `;

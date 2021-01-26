@@ -14,6 +14,7 @@ const PortfolioEdit =  () => {
     const router = useRouter();
     const {id} = router.query;
     const { loading, data } = useGetPortfolio({variables: {id}});
+    console.log("data", data);
 
     const [updatePortfolioHandler, {error}] = useUpdatePortfolio();  //To update portfolios
 
@@ -21,6 +22,7 @@ const PortfolioEdit =  () => {
         return error.graphQLErrors && error.graphQLErrors[0].message || 'Oops something went wrong.'
     }
      const editPortfolio = async (data) =>{
+        console.log("edited dara", data);
          await updatePortfolioHandler({variables: {id, ...data}});
          toast.success('Portfolio has been updated', {autoClose: 2000});
      };

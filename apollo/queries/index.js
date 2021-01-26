@@ -16,11 +16,13 @@ export const GET_PORTFOLIO = gql`
             },
             jobTitle
             description
+            jobResponsibilities
             startDate
             endDate
              techStack{
              label
              value
+             __typename @skip(if: true)
               }
             }
           }  
@@ -39,6 +41,7 @@ export const GET_PORTFOLIOS = gql`
             },
             jobTitle,
             description,
+            jobResponsibilities,
             startDate,
             endDate,
             techStack{
@@ -57,6 +60,7 @@ export const CREATE_PORTFOLIO = gql`
         $company: companyData
         $jobTitle: String
         $description: String
+        $jobResponsibilities: String
         $startDate: String
         $endDate: String
         $techStack: [techStackData]    
@@ -67,6 +71,7 @@ export const CREATE_PORTFOLIO = gql`
             company: $company
             jobTitle: $jobTitle
             description: $description
+            jobResponsibilities: $jobResponsibilities
             startDate: $startDate
             endDate: $endDate
             techStack: $techStack
@@ -81,6 +86,7 @@ export const CREATE_PORTFOLIO = gql`
                  },
                 jobTitle,
                 description,
+                jobResponsibilities,
                 startDate,
                 endDate,
                 techStack{
@@ -99,6 +105,7 @@ export const UPDATE_PORTFOLIO = gql`
         $company: companyData
         $jobTitle: String
         $description: String
+        $jobResponsibilities: String
         $startDate: String
         $endDate: String   
         $techStack: [techStackData]    
@@ -108,6 +115,7 @@ export const UPDATE_PORTFOLIO = gql`
             company: $company
             jobTitle: $jobTitle
             description: $description
+            jobResponsibilities: $jobResponsibilities
             startDate: $startDate
             endDate: $endDate,
             techStack: $techStack
@@ -122,6 +130,7 @@ export const UPDATE_PORTFOLIO = gql`
                  },
                 jobTitle,
                 description,
+                jobResponsibilities,
                 startDate,
                 endDate,
                 techStack{

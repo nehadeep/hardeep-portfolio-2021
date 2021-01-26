@@ -14,7 +14,7 @@ const portfolioSchema = new Schema({
     },
     jobTitle: {type:String, required: true},
     description: {type:String, required: true},
-    jobResponsibilities: [{type: String}],
+    jobResponsibilities: {type: String},
     startDate: {type:Date, required: true},
     endDate: Date,
     techStack: [

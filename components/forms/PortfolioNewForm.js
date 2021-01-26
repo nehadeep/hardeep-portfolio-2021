@@ -31,7 +31,6 @@ const PortfolioNewForm = ({onSubmit, initialData={}, create})=>{
 
             setTechStack(initialData.techStack.map(x=>x.value));
 
-            console.log("inota; data", initialData, techStackVal)
         }
 
     }, [initialData]);
@@ -44,7 +43,6 @@ const PortfolioNewForm = ({onSubmit, initialData={}, create})=>{
     const handleTechStack = (e, type) =>{
 
          setTechStack(Array.isArray(e) ? e.map(x => x.value) : []); //this actually filters the value of techStackVal below
-         console.log("values", e, techStackVal, type);
          setValue(type, e);
     }
 
@@ -111,6 +109,18 @@ const PortfolioNewForm = ({onSubmit, initialData={}, create})=>{
                 <textarea
                     ref={register}
                     name="description"
+                    rows="5"
+                    type="text"
+                    className="form-control"
+                    id="description">
+               </textarea>
+            </div>
+
+            <div className="form-group">
+                <label htmlFor="jobResponsibilities">Responsibilities</label>
+                <textarea
+                    ref={register}
+                    name="jobResponsibilities"
                     rows="5"
                     type="text"
                     className="form-control"
