@@ -2,17 +2,16 @@
 
 const mongoose = require('mongoose');
 
-const config = require('../config/dev');
-
 const session = require('express-session');
 
 const mongoDBStore = require('connect-mongodb-session')(session);
 
 require('./models/portfolio');
 require('./models/user');
+const config = require('../config')
 
 exports.connect = () =>{
-    mongoose.connect(process.env.DB_URI,
+    mongoose.connect(config.DB_URI,
         {
             useNewUrlParser: true,
             useUnifiedTopology: true,

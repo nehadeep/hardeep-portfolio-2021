@@ -1,14 +1,14 @@
 const mongoose = require('mongoose');
-const config = require('../config/dev');
+const config = require('../config');
 const fakeDb = require('./fakeDb');
 
 
-    mongoose.connect('mongodb+srv://Kaur_database:KaurPortfolioDatabase@cluster0.4uyil.mongodb.net/kaurPortfolioDb?retryWrites=true&w=majority',
+    mongoose.connect(config.DB_URI,
         {
             useNewUrlParser: true,
             useUnifiedTopology: true,
-            //  useFindAndModify: false,
-            // useCreateIndex: true,
+              useFindAndModify: false,
+             useCreateIndex: true,
         }, async () => {
             console.log("starting populating DB.....");
             await fakeDb.populate();
