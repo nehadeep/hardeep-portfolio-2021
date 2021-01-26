@@ -106,7 +106,6 @@ const PortfolioDetail = ({query}) =>{
 
 PortfolioDetail.getInitialProps = async({query}) =>{
     // const portfolio = await fetchPortfoliosById(query.id);
-    console.log("quert", query)
     return {query};
 
 }
