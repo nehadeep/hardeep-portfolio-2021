@@ -12,12 +12,24 @@ export const TECHSTACK = [
         label: "React-Hooks",
     },
     {
+        value: "Next.js",
+        label: "Next.js",
+    },
+    {
         value: "Angular 9+",
         label: "Angular 9+",
     },
     {
-        value: "Node.js",
-        label: "Node.js",
+        value: "Apollo Client",
+        label: "Apollo Client",
+    },
+    {
+        value: "Apollo Server",
+        label: "Apollo Server",
+    },
+    {
+        value: "Next.js",
+        label: "Next.js",
     },
     {
         value: "GraphQL",

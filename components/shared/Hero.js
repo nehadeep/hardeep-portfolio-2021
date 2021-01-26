@@ -1,3 +1,6 @@
+import {Nav} from "react-bootstrap";
+import React from "react";
+import {AppLink} from "./Navbar";
 
 
 const Hero = ()=>{
@@ -5,10 +8,13 @@ const Hero = ()=>{
         <section className="fj-hero">
             <div className="fj-hero-wrapper row">
                 <div className="hero-left col-md-6">
-                    <h1 className="white hero-title">Hey I'm Hardeep Kaur. Experienced Senior Front End developer</h1>
-                    <h2 className="white hero-subtitle">Check my portfolio</h2>
+                    <h1 className="white hero-title">Hey I'm Hardeep Kaur. Experienced Senior Front End Developer</h1>
+                    <h2 className="white hero-subtitle">React16+ , Angular 8+</h2>
                     <div className="button-container">
-                        <a href="" className="btn btn-main bg-blue ttu">See my work</a>
+                        <AppLink href="/portfolios" className="btn btn-main bg-blue ttu">
+                            See my work
+                        </AppLink>
+
                     </div>
                 </div>
                 <div className="hero-right col-md-6">

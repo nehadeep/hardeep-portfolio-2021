@@ -833,6 +833,21 @@ html {
   float: right;
 }
 
+.tech-skills-container{
+  display: block;
+}
+
+.tech-skills{
+  padding: 2px 10px;
+  background-color: $gray-70;
+  color: $white;
+  margin-right: 3px;
+  display: inline-block;
+}
+.external-links{
+  margin-right: 10px;
+}
+
 //ui spinner loader css
 .spinner-container{
   position: absolute;

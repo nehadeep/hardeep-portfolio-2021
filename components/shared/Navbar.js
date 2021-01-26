@@ -4,7 +4,7 @@ import Link from "next/link";
 import withApollo from "@/hoc/withApollo";
 import {useLazyGetUser} from "@/apollo/actions";
 
-const AppLink = ({children, className, href}) =>
+export const AppLink = ({children, className, href}) =>
     <Link href={href}>
         <a className={className}>{children}</a>
     </Link>
@@ -41,9 +41,9 @@ const AppNavbar = () =>{
                         <AppLink href="/portfolios" className="nav-link mr-3">
                         Portfolio
                         </AppLink>
-                        <AppLink  href="/forum/categories" className="nav-link mr-3">
-                          Forums
-                        </AppLink>
+                        {/*<AppLink  href="/forum/categories" className="nav-link mr-3">*/}
+                        {/*  Forums*/}
+                        {/*</AppLink>*/}
                         <AppLink href="/cv" className="nav-link mr-3">
                            Cv
                         </AppLink>
