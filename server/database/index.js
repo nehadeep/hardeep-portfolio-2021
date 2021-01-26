@@ -8,7 +8,8 @@ const mongoDBStore = require('connect-mongodb-session')(session);
 
 require('./models/portfolio');
 require('./models/user');
-const config = require('../config')
+const config = require('../config');
+
 
 exports.connect = () =>{
     mongoose.connect(config.DB_URI,

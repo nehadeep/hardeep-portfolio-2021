@@ -4,7 +4,6 @@ const session = require('express-session');
 const passport = require('passport');
 
 
-
 exports.init = (server, db) =>{
 
     require('./passport').init(passport);
