@@ -13,6 +13,7 @@ export const GET_PORTFOLIO = gql`
              city
              state
              country
+             website
             },
             jobTitle
             description
@@ -38,6 +39,7 @@ export const GET_PORTFOLIOS = gql`
              city,
              state,
              country,
+             website
             },
             jobTitle,
             description,
@@ -83,6 +85,7 @@ export const CREATE_PORTFOLIO = gql`
                  city,
                  state,
                  country,
+                 website
                  },
                 jobTitle,
                 description,
@@ -127,6 +130,7 @@ export const UPDATE_PORTFOLIO = gql`
                  city,
                  state,
                  country,
+                 website
                  },
                 jobTitle,
                 description,

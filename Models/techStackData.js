@@ -1,5 +1,17 @@
 export const TECHSTACK = [
     {
+        value: "HTML5",
+        label: "HTML5",
+    },
+    {
+        value: "Javascript",
+        label: "Javascript",
+    },
+    {
+        value: "Jquery",
+        label: "Jquery",
+    },
+    {
         value: "React",
         label: "React",
     },
@@ -18,6 +30,14 @@ export const TECHSTACK = [
     {
         value: "Angular 9+",
         label: "Angular 9+",
+    },
+    {
+        value: "Angular 4+",
+        label: "Angular 4+",
+    },
+    {
+        value: "Angular 1.x",
+        label: "Angular 1.x",
     },
     {
         value: "Apollo Client",
@@ -58,5 +78,13 @@ export const TECHSTACK = [
     {
         value: "CSS",
         label: "CSS",
+    },
+    {
+        value: "Bootstrap",
+        label: "Bootstrap",
+    },
+    {
+        value: "Angular Material",
+        label: "Angular Material",
     },
 ];

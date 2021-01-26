@@ -16,7 +16,7 @@ import {
 
 export const useGetPortfolios = () => useQuery(GET_PORTFOLIOS); //get all the portfolios
 
-export const useGetPortfolio = (options) => useQuery(GET_PORTFOLIO, options); //get all the portfolios
+export const useGetPortfolio = (options) => useQuery(GET_PORTFOLIO, options); //get one  portfolio
 
 
 export const useCreatePortfolio= () => useMutation(CREATE_PORTFOLIO, //To create portfolios

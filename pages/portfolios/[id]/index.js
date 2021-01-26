@@ -40,54 +40,78 @@ const PortfolioDetail = ({query}) =>{
 
     return(
         <BaseLayout>
-        <div className="portfolio-detail">
-            <div className="container">
+            {!loading && <div className="portfolio-detail">
+                <div className="container">
 
-                <div className="jumbotron">
-                    <h1 className="display-3">{portfolio.title}</h1>
-                    <p className="lead">{portfolio.jobTitle}</p>
-                    <p>
-                        <a className="btn btn-lg btn-success" href={portfolio.companyWebsite} role="button">
-                            See Company</a>
-                    </p>
-                </div>
-
-                <div className="row marketing">
-                    <div className="col-lg-6">
-                        <h4 className="title">Location</h4>
-                        <p className="text">{portfolio.location}</p>
-
-                        <h4 className="title">Start Date</h4>
-                        <p className="text">{formatDate(portfolio.startDate)}</p>
+                    <div className="jumbotron">
+                        <h1 className="display-3">{portfolio.title}</h1>
+                        <p className="lead">{portfolio.jobTitle}</p>
+                        <p>
+                            <a className="btn btn-lg btn-success" href={portfolio.company.website} target="_blank" role="button">
+                                See Company</a>
+                        </p>
                     </div>
 
-                    <div className="col-lg-6">
-                        {/* TODO: days later... */}
-                        <h4 className="title">Days</h4>
-                        <p className="text">{portfolio.daysOfExperience}</p>
+                    <div className="row marketing">
+                        <div className="col-lg-6">
+                            <h4 className="title">Location</h4>
+                            <p className="text">{portfolio.company.city}, {portfolio.company.state}, {portfolio.company.country}</p>
 
-                        <h4 className="title">End Date</h4>
-                        <p className="text">{portfolio.endDate?formatDate(portfolio.endDate): 'Present'}</p>
-                    </div>
-                    <div className="col-md-12">
-                        <hr />
-                        <h4 className="title">Description</h4>
-                        <p>{portfolio.description}</p>
+                            <h4 className="title">Start Date</h4>
+                            <p className="text">{formatDate(portfolio.startDate)}</p>
+                        </div>
+
+                        <div className="col-lg-6">
+                            {/* TODO: days later... */}
+                            <h4 className="title">Days</h4>
+                            <p className="text">{portfolio.daysOfExperience}</p>
+
+                            <h4 className="title">End Date</h4>
+                            <p className="text">{portfolio.endDate ? formatDate(portfolio.endDate) : 'Present'}</p>
+                        </div>
+                        <div className="col-md-12">
+                            <hr/>
+                            <h4 className="title">Description</h4>
+                            <p>{portfolio.description}</p>
+                        </div>
+                        <div className="col-md-12">
+                            <hr/>
+                            <h4 className="title">Job Responsibilities</h4>
+                            <ul>
+
+                                {portfolio.jobResponsibilities.trim().split('\n').map((stack, i) => [
+                                    <li key={i}>{stack}</li>
+                                ])}
+                            </ul>
+                        </div>
+                        <div className="col-md-12">
+                            <hr/>
+                            <h4 className="title">Environments</h4>
+                            <ul>
+                                {portfolio.techStack.map((env, i) => [
+                                    <li key={i}>{env.label}</li>
+                                ])}
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+            }
         </BaseLayout>
+
     )
 };
 
 
 
 PortfolioDetail.getInitialProps = async({query}) =>{
-   // const portfolio = await fetchPortfoliosById(query.id);
-      return {query};
+    // const portfolio = await fetchPortfoliosById(query.id);
+    console.log("quert", query)
+    return {query};
 
 }
+
+//export default withApollo(PortfolioDetail);
 
 export default withApollo(PortfolioDetail, {getDataFromTree});
 

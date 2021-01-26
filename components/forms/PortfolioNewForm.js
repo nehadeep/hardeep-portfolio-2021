@@ -95,6 +95,15 @@ const PortfolioNewForm = ({onSubmit, initialData={}, create})=>{
                     id="country"/>
             </div>
             <div className="form-group">
+                <label htmlFor="website">Company Website</label>
+                <input
+                    ref={register}
+                    name="company.website"
+                    type="text"
+                    className="form-control"
+                    id="website"/>
+            </div>
+            <div className="form-group">
                 <label htmlFor="jobTitle">Job Title</label>
                 <input
                     ref={register}

@@ -38,6 +38,9 @@ const AppNavbar = () =>{
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
+                        <AppLink href="/" className="nav-link mr-3">
+                            Home
+                        </AppLink>
                         <AppLink href="/portfolios" className="nav-link mr-3">
                         Portfolio
                         </AppLink>
@@ -45,7 +48,7 @@ const AppNavbar = () =>{
                         {/*  Forums*/}
                         {/*</AppLink>*/}
                         <AppLink href="/cv" className="nav-link mr-3">
-                           Cv
+                           Resume 2021
                         </AppLink>
                     </Nav>
                     { hasResponse &&

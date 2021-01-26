@@ -8,7 +8,7 @@ const Hero = ()=>{
         <section className="fj-hero">
             <div className="fj-hero-wrapper row">
                 <div className="hero-left col-md-6">
-                    <h1 className="white hero-title">Hey I'm Hardeep Kaur. Experienced Senior Front End Developer</h1>
+                    <h1 className="white hero-title">Hey I'm Hardeep Kaur. Experienced Senior Front End Developer with 6.5+ years of experience</h1>
                     <h2 className="white hero-subtitle">React16+ , Angular 8+</h2>
                     <div className="button-container">
                         <AppLink href="/portfolios" className="btn btn-main bg-blue ttu">
