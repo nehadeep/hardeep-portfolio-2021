@@ -14,7 +14,7 @@ exports.init = (server, db) =>{
         cookie: {maxAge: 2 * 60 * 60 * 1000},
         resave: false,
         saveUninitialized: false,
-        store: db.initSessionStore()
+       // store: db.initSessionStore()
     };
     if(process.env.NODE_ENV === 'production'){
         console.log("prod test")

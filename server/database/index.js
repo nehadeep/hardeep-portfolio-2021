@@ -23,10 +23,10 @@ exports.connect = () =>{
     })
 };
 
-exports.initSessionStore = () =>{
-    const store = new mongoDBStore({
-        uri: process.env.DB_URI,
-        collection: 'portfolioSessions'
-    });
-    return store;
-}
+// exports.initSessionStore = () =>{ //@todo: later on when i have to make changes to keep the session
+//     const store = new mongoDBStore({
+//         uri: process.env.DB_URI,
+//         collection: 'portfolioSessions'
+//     });
+//     return store;
+// }
