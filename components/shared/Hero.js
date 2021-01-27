@@ -15,6 +15,11 @@ const Hero = ()=>{
                             See my work
                         </AppLink>
 
+                         <a className="external-links" href="https://github.com/" target="_blank" style={{display: 'inline-grid', marginLeft: '10px', color:'#fff'}}>
+                           <img src="/github-logo.png" className="git-hub-link" alt="githubLink"/>
+                            <span>Git Hub</span>
+                         </a>
+
                     </div>
                 </div>
                 <div className="hero-right col-md-6">
